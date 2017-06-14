@@ -1,5 +1,4 @@
-# modu-threejs-practice00
-threejs를 활용하여 nodejs와 web환경에서 빨간색 사각형을 생성하여 움직이는 기본예제입니다. threejs학습에 도움이 되었으면 합니다.
+# n3d-Subway
 
 ## 필요요소
 - ``git(2.14.0.windows.1 혹은 이에 상응하는 osx버전)``에 대한 이해 및 설치

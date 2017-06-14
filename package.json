@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/dhygns/modu-threejs-practice00#readme",
   "dependencies": {
+    "jquery": "^3.2.1",
     "n3d-threejs": "^76.0.0"
   },
   "devDependencies": {
