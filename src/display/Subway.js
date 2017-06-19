@@ -12,26 +12,26 @@ class Subway {
     );
 
     this.camera = new THREE.PerspectiveCamera(
-      45, window.innerWidth / window.innerHeight, 1.0, 1000.0);
+      45, window.innerWidth / window.innerHeight, 1.0, 2000.0);
     this.camera.position.z = 300.0;
 
-    this.textureloader = new THREE.TextureLoader();
-    this.textureloader.load("img/subway.jpg", (img) => {
-      img.minFilter = THREE.LinearFilter;
-      img.magFilter = THREE.LinearFilter;
-
-      this.background = new THREE.Object3D();
-      this.background.add(new THREE.Mesh(
-        new THREE.PlaneGeometry(2.0, 2.0),
-        new THREE.MeshBasicMaterial({ map : img })
-      ));
-
-      this.background.scale.x = img.image.width / 10.0;
-      this.background.scale.y = img.image.height / 10.0;
-
-      this.background.position.z = -1;
-      this.scene.add(this.background);
-    })
+    // this.textureloader = new THREE.TextureLoader();
+    // this.textureloader.load("img/subway.jpg", (img) => {
+    //   img.minFilter = THREE.LinearFilter;
+    //   img.magFilter = THREE.LinearFilter;
+    //
+    //   this.background = new THREE.Object3D();
+    //   this.background.add(new THREE.Mesh(
+    //     new THREE.PlaneGeometry(2.0, 2.0),
+    //     new THREE.MeshBasicMaterial({ map : img })
+    //   ));
+    //
+    //   this.background.scale.x = img.image.width / 10.0;
+    //   this.background.scale.y = img.image.height / 10.0;
+    //
+    //   this.background.position.z = -1;
+    //   this.scene.add(this.background);
+    // })
 
 
     //
@@ -43,18 +43,33 @@ class Subway {
     this.scene = new THREE.Scene();
     this.line2station = [];
 
-    for(var sn in SUBWAY.line2.station) {
-      const station = SUBWAY.line2.station[sn];
-      const idx = this.line2station.push(new THREE.Object3D()) - 1;
-      const obj = this.line2station[idx];
-      obj.add(new THREE.Mesh(
-        new THREE.PlaneGeometry(2.0, 2.0),
-        new THREE.MeshBasicMaterial({color : SUBWAY.line2.color})
-      ))
-      obj.position.x = station.x;
-      obj.position.y = station.y;
-      this.scene.add(obj);
-    }
+    SUBWAY.loader.onload = (data) => {
+      data[0].logicalInfo.forEach((obj) => {
+        var object = new THREE.Object3D();
+        object.add(new THREE.Mesh(
+          new THREE.PlaneGeometry(2.0, 2.0),
+          new THREE.MeshBasicMaterial({color : "gray" })
+        ));
+        var vec = new THREE.Vector2(obj.imagePosX, obj.imagePosY);
+        vec.x -= 0.5 * 3781; vec.y -= 0.5 * 2933;
+
+        object.position.x = vec.x / 12.0;
+        object.position.y = vec.y / 12.0;
+        this.scene.add(object);
+      });
+    };
+    // for(var sn in SUBWAY.line2.station) {
+    //   const station = SUBWAY.line2.station[sn];
+    //   const idx = this.line2station.push(new THREE.Object3D()) - 1;
+    //   const obj = this.line2station[idx];
+    //   obj.add(new THREE.Mesh(
+    //     new THREE.PlaneGeometry(2.0, 2.0),
+    //     new THREE.MeshBasicMaterial({color : SUBWAY.line2.color})
+    //   ))
+    //   obj.position.x = station.x;
+    //   obj.position.y = station.y;
+    //   this.scene.add(obj);
+    // }
     //1~9: 1~9호선, I: 인천1호선, K: 경의중앙선, B: 분당선, A: 공항철도, G: 경춘선, S:신분당선, SU:수인선
     // this.lines = {};
     //

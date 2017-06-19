@@ -1,32 +1,28 @@
 {
-  "name": "n3d-subway",
+  "name": "private-project-subway",
   "version": "1.0.0",
-  "description": "modu",
+  "description": "Korea Subway Station Art Map",
   "main": "app.js",
   "scripts": {
-    "build": "webpack --watch ./src/index.js ./build/index.bundle.js",
+    "build": "start webpack --watch ./src/index.js ./build/index.bundle.js",
     "start": "node app.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dhygns/modu-threejs-practice00.git"
+    "url": "git+https://github.com/dhygns/private-project-subway.git"
   },
-  "keywords": [
-    "practice",
-    "example"
-  ],
   "author": "donghyeon kim",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dhygns/modu-threejs-practice00/issues"
+    "url": "https://github.com/dhygns/private-project-subway/issues"
   },
-  "homepage": "https://github.com/dhygns/modu-threejs-practice00#readme",
-  "dependencies": {
-    "jquery": "^3.2.1",
-    "n3d-threejs": "^76.0.0"
-  },
+  "homepage": "https://github.com/dhygns/private-project-subway#readme",
   "devDependencies": {
-    "express": "^4.15.3",
+    "jquery": "^3.2.1",
+    "n3d-threejs": "^76.0.0",
     "webpack": "^2.6.1"
+  },
+  "dependencies": {
+    "express": "^4.15.3"
   }
 }
